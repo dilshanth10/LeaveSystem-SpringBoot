@@ -6,9 +6,9 @@ public interface UserService {
 
 	public Iterable<User> getAllUsers();
 
-	public void addUser(User user);
+	public boolean addUser(User user);
 
 	public void deleteUser(Integer id);
 
-	public void updateUser(Integer id, User user);
+	public boolean updateUser(Integer id, User user);
 }

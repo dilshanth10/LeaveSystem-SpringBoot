@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sgic.ls.entity.LeaveType;
-import com.sgic.ls.service.leavetype.LeaveTypeService;
+import com.sgic.ls.entity.Leave;
+import com.sgic.ls.service.leave.LeaveService;
 
 @RestController
-public class LeaveTypeController {
+public class LeaveController {
 
 	@Autowired
-	private LeaveTypeService leaveTypeService;
+	private LeaveService leaveTypeService;
 	
 	@GetMapping("/leavetype")
-	public Iterable<LeaveType> getAllRoles() {
+	public Iterable<Leave> getAllRoles() {
 		return leaveTypeService.getAllLeaveTypes();
 	}
 	
 	@PostMapping("/leavetype")
-	public void addLeaveType(@RequestBody LeaveType leaveType) {
+	public void addLeaveType(@RequestBody Leave leaveType) {
 		leaveTypeService.addLeaveType(leaveType);
 	}
 
@@ -34,7 +34,7 @@ public class LeaveTypeController {
 	}
 
 	@PutMapping("/leavetype/{id}")
-	public void updateLeaveType(@PathVariable Integer id, @RequestBody LeaveType leaveType) {
+	public void updateLeaveType(@PathVariable Integer id, @RequestBody Leave leaveType) {
 		leaveTypeService.updateLeaveType(id, leaveType);
 	}
 }

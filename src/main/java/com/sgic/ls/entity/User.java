@@ -1,22 +1,35 @@
 package com.sgic.ls.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class User {
+@Table(schema="leaveschema", name="user")
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -650131880598365739L;
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne
-	@JoinColumn(name="roleId")
-	private Role role;
 	private String username;
 	private String password;
 	private String email;
 	private String firstName;
 	private String lastName;
+	
+	@ManyToOne(cascade= {CascadeType.PERSIST})
+	@JoinColumn(name="role_id")
+	private Role role;
 
 	public Integer getId() {
 		return id;

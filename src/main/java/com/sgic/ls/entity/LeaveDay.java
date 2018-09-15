@@ -2,9 +2,11 @@ package com.sgic.ls.entity;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(schema="leaveschema", name="leave_day")
 public class LeaveDay {
 //	@Id
 //	@OneToOne

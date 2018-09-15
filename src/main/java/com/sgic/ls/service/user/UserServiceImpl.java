@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import com.sgic.ls.entity.User;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -17,8 +17,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void addUser(User user) {
+	public boolean addUser(User user) {
 		userRepository.save(user);
+		return true;
 	}
 
 	@Override
@@ -27,15 +28,18 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void updateUser(Integer id, User user) {
+	public boolean updateUser(Integer id, User user) {
 		User existUser = userRepository.getOne(id);
-		existUser.setEmail(user.getEmail());
-		existUser.setUsername(user.getUsername());
-		existUser.setPassword(user.getPassword());
-		existUser.setFirstName(user.getFirstName());
-		existUser.setLastName(user.getLastName());
-		existUser.setRole(user.getRole());
-		userRepository.save(existUser);
+		if (existUser.getId() == user.getId()) {
+			existUser.setEmail(user.getEmail());
+			existUser.setUsername(user.getUsername());
+			existUser.setPassword(user.getPassword());
+			existUser.setFirstName(user.getFirstName());
+			existUser.setLastName(user.getLastName());
+			existUser.setRole(user.getRole());
+			userRepository.save(existUser);
+		}
+		return true;
 	}
 
 }

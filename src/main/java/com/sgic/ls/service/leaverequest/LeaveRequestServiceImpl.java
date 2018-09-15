@@ -31,9 +31,9 @@ public class LeaveRequestServiceImpl implements LeaveRequestService{
 		LeaveRequest existLeaveRequest = leaveRequestRepository.getOne(id);
 		existLeaveRequest.setUser(leaveRequest.getUser());
 		existLeaveRequest.setLeaveStatus(leaveRequest.getLeaveStatus());
-		existLeaveRequest.setLeaveType(leaveRequest.getLeaveType());
-		existLeaveRequest.setStartDate(leaveRequest.getStartDate());
-		existLeaveRequest.setEndDate(leaveRequest.getEndDate());
+		existLeaveRequest.setLeave(leaveRequest.getLeave());
+		existLeaveRequest.setFromTime(leaveRequest.getFromTime());
+		existLeaveRequest.setToTime(leaveRequest.getToTime());
 		leaveRequestRepository.save(existLeaveRequest);
 	}
 

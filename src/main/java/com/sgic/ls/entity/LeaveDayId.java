@@ -5,14 +5,18 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
-@SuppressWarnings("serial")
 @Embeddable
 public class LeaveDayId implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4085851078571952950L;
+	
 	@ManyToOne
 	private User user;
 	@ManyToOne
-	private LeaveType type;
+	private Leave type;
 
 	public User getUser() {
 		return user;
@@ -22,11 +26,11 @@ public class LeaveDayId implements Serializable {
 		this.user = user;
 	}
 
-	public LeaveType getType() {
+	public Leave getType() {
 		return type;
 	}
 
-	public void setType(LeaveType type) {
+	public void setType(Leave type) {
 		this.type = type;
 	}
 	

@@ -1,13 +1,18 @@
 package com.sgic.ls.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(schema="leaveschema", name="leave_status")
 public class LeaveStatus {
 	@Id
-	Integer id;
-	String leaveStatus;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	private String leaveStatus;
 
 	public Integer getId() {
 		return id;
