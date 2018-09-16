@@ -1,6 +1,9 @@
 package com.sgic.ls.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,23 +21,28 @@ public class LeaveRequestController {
 	@Autowired
 	private LeaveRequestService leaveRequestService;
 
-	@GetMapping("/leaverequest")
+	@GetMapping("/leaverequests/")
 	public Iterable<LeaveRequest> getAllLeaveRequests() {
 		return leaveRequestService.getAllLeaveRequests();
 	}
 
-	@PostMapping("/leaverequest")
+	@PostMapping("/leaverequests")
 	public void addLeaveRequest(@RequestBody LeaveRequest leaveRequest) {
 		leaveRequestService.addLeaveRequest(leaveRequest);;
 	}
 
-	@DeleteMapping("/leaverequest/{id}")
+	@DeleteMapping("/leaverequests/{id}")
 	public void deleteLeaveRequest(@PathVariable Integer id) {
 		leaveRequestService.deleteLeaveRequest(id);
 	}
 
-	@PutMapping("leaverequest/{id}")
+	@PutMapping("leaverequests/{id}")
 	public void updateLeaveRequest(@PathVariable Integer id, @RequestBody LeaveRequest leaveRequest) {
 		leaveRequestService.updateLeaveRequest(id, leaveRequest);
+	}
+	
+	@GetMapping("leaverequests")
+	public List<LeaveRequest> findByUserNameAndAllocation(@Param("firstname") String firstName, @Param("allocationPeriod") float allocationPeriod) {
+		return leaveRequestService.findByUserNameAndAllocation(firstName, allocationPeriod);
 	}
 }

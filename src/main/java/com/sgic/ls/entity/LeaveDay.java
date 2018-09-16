@@ -1,5 +1,7 @@
 package com.sgic.ls.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -7,7 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema="leaveschema", name="leave_day")
-public class LeaveDay {
+public class LeaveDay implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2126191734807768138L;
+
 //	@Id
 //	@OneToOne
 //	private User user;

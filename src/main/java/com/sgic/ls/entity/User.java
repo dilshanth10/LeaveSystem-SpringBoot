@@ -1,14 +1,17 @@
 package com.sgic.ls.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +29,9 @@ public class User implements Serializable{
 	private String email;
 	private String firstName;
 	private String lastName;
+	
+	@OneToMany(mappedBy = "user", fetch =FetchType.EAGER , cascade = {CascadeType.ALL})
+	private List<LeaveRequest> leaveRequest;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST})
 	@JoinColumn(name="role_id")

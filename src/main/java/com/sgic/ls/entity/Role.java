@@ -1,5 +1,7 @@
 package com.sgic.ls.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(schema="leaveschema", name="role")
-public class Role {
+public class Role implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4675329358062572646L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 //	@Column(columnDefinition="int(5)")

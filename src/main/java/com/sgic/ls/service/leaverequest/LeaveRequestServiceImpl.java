@@ -1,5 +1,7 @@
 package com.sgic.ls.service.leaverequest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,11 @@ public class LeaveRequestServiceImpl implements LeaveRequestService{
 		existLeaveRequest.setFromTime(leaveRequest.getFromTime());
 		existLeaveRequest.setToTime(leaveRequest.getToTime());
 		leaveRequestRepository.save(existLeaveRequest);
+	}
+
+	@Override
+	public List<LeaveRequest> findByUserNameAndAllocation(String firstName, float allocationPeriod) {
+		return leaveRequestRepository.findByUserNameAndAllocation(firstName, allocationPeriod);
 	}
 
 }

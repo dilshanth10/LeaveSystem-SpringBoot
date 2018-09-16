@@ -16,25 +16,25 @@ import com.sgic.ls.service.leave.LeaveService;
 public class LeaveController {
 
 	@Autowired
-	private LeaveService leaveTypeService;
+	private LeaveService leaveService;
 	
-	@GetMapping("/leavetype")
+	@GetMapping("/leave")
 	public Iterable<Leave> getAllRoles() {
-		return leaveTypeService.getAllLeaveTypes();
+		return leaveService.getAllLeaveTypes();
 	}
 	
-	@PostMapping("/leavetype")
-	public void addLeaveType(@RequestBody Leave leaveType) {
-		leaveTypeService.addLeaveType(leaveType);
+	@PostMapping("/leave")
+	public void addleave(@RequestBody Leave leave) {
+		leaveService.addLeaveType(leave);
 	}
 
-	@DeleteMapping("/leavetype/{id}")
-	public void deleteLeaveType(@PathVariable Integer id) {
-		leaveTypeService.deleteLeaveType(id);
+	@DeleteMapping("/leave/{id}")
+	public void deleteleave(@PathVariable Integer id) {
+		leaveService.deleteLeaveType(id);
 	}
 
-	@PutMapping("/leavetype/{id}")
-	public void updateLeaveType(@PathVariable Integer id, @RequestBody Leave leaveType) {
-		leaveTypeService.updateLeaveType(id, leaveType);
+	@PutMapping("/leave/{id}")
+	public void updateleave(@PathVariable Integer id, @RequestBody Leave leave) {
+		leaveService.updateLeaveType(id, leave);
 	}
 }
