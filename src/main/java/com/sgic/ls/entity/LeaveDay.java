@@ -1,61 +1,60 @@
 package com.sgic.ls.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(schema="leaveschema", name="leave_day")
-public class LeaveDay implements Serializable{
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2126191734807768138L;
+@Table(schema = "leaveschema", name = "leave_day")
+public class LeaveDay implements Serializable {
+  /**
+  	 * 
+  	 */
+  private static final long serialVersionUID = 2126191734807768138L;
 
-//	@Id
-//	@OneToOne
-//	private User user;
-//	@Id
-//	@OneToOne
-//	private LeaveType leaveType;
-	
-	@EmbeddedId
-	private LeaveDayId id;
-	
-	private float leaveDays;
+  // @Id
+  // @OneToOne
+  // private User user;
+  // @Id
+  // @OneToOne
+  // private LeaveType leaveType;
 
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
-//
-//	public LeaveType getLeaveType() {
-//		return leaveType;
-//	}
-//
-//	public void setLeaveType(LeaveType leaveType) {
-//		this.leaveType = leaveType;
-//	}
+  @EmbeddedId
+  private LeaveDayId id;
 
-	public float getLeaveDays() {
-		return leaveDays;
-	}
+  private float leaveDays;
 
-	public LeaveDayId getId() {
-		return id;
-	}
+  // public User getUser() {
+  // return user;
+  // }
+  //
+  // public void setUser(User user) {
+  // this.user = user;
+  // }
+  //
+  // public LeaveType getLeaveType() {
+  // return leaveType;
+  // }
+  //
+  // public void setLeaveType(LeaveType leaveType) {
+  // this.leaveType = leaveType;
+  // }
 
-	public void setId(LeaveDayId id) {
-		this.id = id;
-	}
+  public float getLeaveDays() {
+    return leaveDays;
+  }
 
-	public void setLeaveDays(float leaveDays) {
-		this.leaveDays = leaveDays;
-	}
+  public LeaveDayId getId() {
+    return id;
+  }
+
+  public void setId(LeaveDayId id) {
+    this.id = id;
+  }
+
+  public void setLeaveDays(float leaveDays) {
+    this.leaveDays = leaveDays;
+  }
 }

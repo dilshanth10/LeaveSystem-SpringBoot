@@ -25,6 +25,7 @@ public class LeaveController {
 	
 	@PostMapping("/leave")
 	public void addleave(@RequestBody Leave leave) {
+//	 Leave leave = leaveDTOMapping.getLeave(leaveDto)
 		leaveService.addLeaveType(leave);
 	}
 

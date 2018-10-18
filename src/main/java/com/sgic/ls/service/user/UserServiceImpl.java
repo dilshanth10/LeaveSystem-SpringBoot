@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.querydsl.core.BooleanBuilder;
@@ -15,6 +16,9 @@ import ch.qos.logback.core.joran.conditional.IfAction;
 
 @Service
 public class UserServiceImpl implements UserService {
+  
+//  @Value("${propertyname}")
+//  private String googleTOken;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -64,7 +68,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> search(UserCriteria userCriteria) {
 		List<User> users = new ArrayList<>();
+		
 		BooleanBuilder booleanBuilder = new BooleanBuilder();
+		
 		if(userCriteria.getLeaveAllocation() != 0) {
 			booleanBuilder.and(QUser.user.leaveRequest.any().leave.allocationPeriod.eq(userCriteria.getLeaveAllocation()));
 		}
@@ -74,14 +80,17 @@ public class UserServiceImpl implements UserService {
 //		if(userCriteria.getTelephone() != null) {
 //			booleanBuilder.and(QUser.user.telephone.containsIgnoreCase(userCriteria.getTelephone()));
 //		}
+		
 		if(userCriteria.getFirstName() != null) {
 			booleanBuilder.and(QUser.user.firstName.containsIgnoreCase(userCriteria.getFirstName()));
 		}
+		
 		if(booleanBuilder.hasValue()) {
 			userRepository.findAll(booleanBuilder).forEach(users::add);
 		}else {
 			users = userRepository.findAll();
 		}
+		
 		return users;
 	}
 
